@@ -137,6 +137,87 @@
           }
         }
       }
+    },
+    "product": {
+      "root": "apps/product",
+      "sourceRoot": "apps/product",
+      "projectType": "application",
+      "schematics": {},
+      "architect": {
+        "build": {
+          "builder": "@nrwl/next:build",
+          "options": {
+            "root": "apps/product",
+            "outputPath": "dist/apps/product"
+          }
+        },
+        "serve": {
+          "builder": "@nrwl/next:dev-server",
+          "options": {
+            "buildTarget": "product:build",
+            "dev": true
+          },
+          "configurations": {
+            "production": {
+              "dev": false
+            }
+          }
+        },
+        "export": {
+          "builder": "@nrwl/next:export",
+          "options": {
+            "buildTarget": "product:build"
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:lint",
+          "options": {
+            "linter": "eslint",
+            "config": "apps/product/.eslintrc",
+            "tsConfig": [
+              "apps/product/tsconfig.json",
+              "apps/product/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!apps/product/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/product/jest.config.js",
+            "tsConfig": "apps/product/tsconfig.spec.json"
+          }
+        }
+      }
+    },
+    "product-e2e": {
+      "root": "apps/product-e2e",
+      "sourceRoot": "apps/product-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/product-e2e/cypress.json",
+            "tsConfig": "apps/product-e2e/tsconfig.e2e.json",
+            "devServerTarget": "product:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "product:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:lint",
+          "options": {
+            "linter": "eslint",
+            "config": "apps/product-e2e/.eslintrc",
+            "tsConfig": ["apps/product-e2e/tsconfig.e2e.json"],
+            "exclude": ["**/node_modules/**", "!apps/product-e2e/**"]
+          }
+        }
+      }
     }
   },
   "cli": {

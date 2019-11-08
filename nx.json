@@ -16,6 +16,12 @@
     },
     "api": {
       "tags": []
+    },
+    "product": {
+      "tags": []
+    },
+    "product-e2e": {
+      "tags": []
     }
   }
 }
