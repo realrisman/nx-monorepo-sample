@@ -22,6 +22,9 @@
     },
     "product-e2e": {
       "tags": []
+    },
+    "data": {
+      "tags": []
     }
   }
 }
