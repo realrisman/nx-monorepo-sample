@@ -1,8 +1,90 @@
 {
   "version": 1,
-  "projects": {},
+  "projects": {
+    "wishlist": {
+      "root": "apps/wishlist",
+      "sourceRoot": "apps/wishlist",
+      "projectType": "application",
+      "schematics": {},
+      "architect": {
+        "build": {
+          "builder": "@nrwl/next:build",
+          "options": {
+            "root": "apps/wishlist",
+            "outputPath": "dist/apps/wishlist"
+          }
+        },
+        "serve": {
+          "builder": "@nrwl/next:dev-server",
+          "options": {
+            "buildTarget": "wishlist:build",
+            "dev": true
+          },
+          "configurations": {
+            "production": {
+              "dev": false
+            }
+          }
+        },
+        "export": {
+          "builder": "@nrwl/next:export",
+          "options": {
+            "buildTarget": "wishlist:build"
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:lint",
+          "options": {
+            "linter": "eslint",
+            "config": "apps/wishlist/.eslintrc",
+            "tsConfig": [
+              "apps/wishlist/tsconfig.json",
+              "apps/wishlist/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!apps/wishlist/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/wishlist/jest.config.js",
+            "tsConfig": "apps/wishlist/tsconfig.spec.json"
+          }
+        }
+      }
+    },
+    "wishlist-e2e": {
+      "root": "apps/wishlist-e2e",
+      "sourceRoot": "apps/wishlist-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/wishlist-e2e/cypress.json",
+            "tsConfig": "apps/wishlist-e2e/tsconfig.e2e.json",
+            "devServerTarget": "wishlist:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "wishlist:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:lint",
+          "options": {
+            "linter": "eslint",
+            "config": "apps/wishlist-e2e/.eslintrc",
+            "tsConfig": ["apps/wishlist-e2e/tsconfig.e2e.json"],
+            "exclude": ["**/node_modules/**", "!apps/wishlist-e2e/**"]
+          }
+        }
+      }
+    }
+  },
   "cli": {
-    "defaultCollection": "@nrwl/workspace"
+    "defaultCollection": "@nrwl/next"
   },
   "schematics": {
     "@nrwl/workspace": {
@@ -17,14 +99,13 @@
     },
     "@nrwl/react": {
       "application": {
-        "linter": "eslint"
-      },
-      "library": {
-        "linter": "eslint"
+        "linter": "eslint",
+        "babel": true
       }
     },
     "@nrwl/next": {
       "application": {
+        "style": "css",
         "linter": "eslint"
       }
     },
@@ -48,5 +129,6 @@
         "linter": "eslint"
       }
     }
-  }
+  },
+  "defaultProject": "wishlist"
 }
