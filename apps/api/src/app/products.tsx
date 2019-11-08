@@ -1,12 +1,5 @@
 import { Express } from 'express';
-
-interface Product {
-  id: number;
-  title: string;
-  image: string;
-  price: number;
-  inStock: boolean;
-}
+import { Product } from '@nx-monorepo-sample/data';
 
 const products: Product[] = [
   {
