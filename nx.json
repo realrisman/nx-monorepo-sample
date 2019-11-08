@@ -13,6 +13,9 @@
     },
     "wishlist-e2e": {
       "tags": []
+    },
+    "api": {
+      "tags": []
     }
   }
 }
