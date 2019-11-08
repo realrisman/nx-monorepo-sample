@@ -16,7 +16,10 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@nx-monorepo-sample/data": ["libs/data/src/index.ts"]
+      "@nx-monorepo-sample/data": ["libs/data/src/index.ts"],
+      "@nx-monorepo-sample/shared-components": [
+        "libs/shared-components/src/index.ts"
+      ]
     }
   },
   "exclude": ["node_modules", "tmp"]
