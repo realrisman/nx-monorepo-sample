@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import Product from '../components/Product';
+import { ProductComponent } from '@nx-monorepo-sample/ui';
 
 import fetch from 'isomorphic-unfetch';
 
@@ -13,7 +13,7 @@ const Index = ({ products }) => (
     <div className="hero">
       <h1 className="title">My Wishlist</h1>
 
-      <Product products={products} />
+      <ProductComponent products={products} />
     </div>
 
     <style jsx>{`
