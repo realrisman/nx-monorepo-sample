@@ -17,9 +17,7 @@
     "baseUrl": ".",
     "paths": {
       "@nx-monorepo-sample/data": ["libs/data/src/index.ts"],
-      "@nx-monorepo-sample/shared-components": [
-        "libs/shared-components/src/index.ts"
-      ]
+      "@nx-monorepo-sample/ui": ["libs/ui/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
